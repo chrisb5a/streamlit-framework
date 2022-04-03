@@ -4,11 +4,12 @@ import streamlit as st
 
 st.title('sentiment vs stock')
 
-inputs = st.selectbox("Do you care about the stock or sentiment?", ("stock", "sentiment")) 
+#inputs = st.selectbox("Do you care about the stock or sentiment?", ("stock", "sentiment")) 
 #inputs = st.text_input("Do you care about the stock or sentiment?")
-choice = inputs
+st.text_input("Do you care about the stock or sentiment?", key = "choice")
 
-if choice == 'stock' :
+
+if st.session_state.choice == 'stock' :
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
     CSV_URL = 'https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY_EXTENDED&symbol=IBM&interval=15min&slice=year1month1&apikey=demo'
 
@@ -20,7 +21,7 @@ if choice == 'stock' :
         for row in my_list:
             print(row)
 
-if choice == 'sentiment' :
+if st.session_state.choice == 'sentiment' :
     url = 'https://www.alphavantage.co/query?function=CONSUMER_SENTIMENT&apikey=demo'
     r = requests.get(url)
     data = r.json()
