@@ -20,7 +20,7 @@ if st.session_state.choice == 'stock' :
         my_list = list(cr)
         for row in my_list:
             st.write(row)
-  else:
+else:
 
     if str(st.session_state.choice) == 'sentiment' :
         url = 'https://www.alphavantage.co/query?function=CONSUMER_SENTIMENT&apikey=demo'
@@ -28,6 +28,6 @@ if st.session_state.choice == 'stock' :
         data = r.json()
 
         st.write(data)
-     else:
+    else:
         
         st.write('write sentiment or stock!')
