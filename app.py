@@ -7,7 +7,7 @@ st.title('sentiment vs stock')
 #inputs = st.selectbox("Do you care about the stock or sentiment?", ("stock", "sentiment")) 
 #inputs = st.text_input("Do you care about the stock or sentiment?")
 st.text_input("Do you care about the stock or sentiment?", key = "choice")
-st.write('ok', type(st.session_state.choice))
+st.write('ok', st.session_state.choice == 'sentiment', st.session_state.choice)
 
 if str(st.session_state.choice) == 'stock' :
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
