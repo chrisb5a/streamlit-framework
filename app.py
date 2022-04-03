@@ -5,7 +5,7 @@ import streamlit as st
 st.title('sentiment vs stock')
 
 #inputs = st.selectbox("Do you care about the stock or sentiment?", ("stock", "sentiment")) 
-inputs = st.text_input()
+inputs = st.text_input("Do you care about the stock or sentiment?")
 
 if inputs == 'stock':
 # replace the "demo" apikey below with your own key from https://www.alphavantage.co/support/#api-key
