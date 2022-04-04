@@ -23,10 +23,10 @@ if st.session_state.choice == 'stock' :
         my_list = list(cr)
     df = pd.DataFrame(my_list[1:])
     df.rename(columns = {0:'time',1:'open', 2:'high',3:'low',4:'close',4:'volume', 5:'close'})
-     
+    df = df[-10:] 
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         
-    c = alt.Chart(df).mark_circle().encode(x=df.index,
+    c = alt.Chart(df).mark_circle().encode(x='time',
         y='close')
     st.altair_chart(c, use_container_width = True)
     
@@ -46,6 +46,7 @@ else:
         datas = pd.DataFrame({'x1':x1,'y':y}) 
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         datas['x1'] = datas['x1'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
+        datas = datas[-10:]
         c = alt.Chart(datas).mark_circle().encode(
         x='x1',
         y='y')
