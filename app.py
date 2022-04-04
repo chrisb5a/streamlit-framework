@@ -36,7 +36,7 @@ else:
         alt.Chart(data.reset_index()).mark_line().encode(
         x='index:T',
         y='value:Q')
-)
+
         
     else:
         
