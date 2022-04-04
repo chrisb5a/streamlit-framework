@@ -36,7 +36,7 @@ else:
             x.append(datetime.strptime(data['data'][i]['date'], '%Y-%m-%d'))
             y.append(data['data'][i]['value'])
         datas = pd.DataFrame({'x':x,'y':y}) 
-        alt.Chart(datas.reset_index()).mark_line().encode(
+        st.alt.Chart(datas.reset_index()).mark_line().encode(
         x='index:T',
         y='value:Q')
 
