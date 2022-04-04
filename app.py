@@ -42,7 +42,7 @@ else:
         x='index:T',
         y='value:Q')
         
-        st.line_chart(datas)
+        st.altair_chart(datas, use_container_width = True)
 
         
     else:
