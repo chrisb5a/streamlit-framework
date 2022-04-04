@@ -22,8 +22,10 @@ if st.session_state.choice == 'stock' :
         cr = csv.reader(decoded_content.splitlines(), delimiter=',')
         my_list = list(cr)
     df = pd.DataFrame(my_list[1:])
-    df.rename(columns = {0:'time',1:'open', 2:'high',3:'low',4:'close',4:'volume', 5:'close'})
-    df = df[-10:] 
+    df = df.rename(columns = {0:'time',1:'open', 2:'high',3:'low',4:'close',4:'volume', 5:'close'})
+    #datas['date'] = datas['date'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
+    
+    df = df[-30:] 
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         
     c = alt.Chart(df).mark_circle().encode(x='time',
@@ -43,13 +45,13 @@ else:
             #x.append(datetime.strptime(data['data'][i]['date'], '%Y-%m-%d'))
             x1.append(data['data'][i]['date'])
             y.append(data['data'][i]['value'])
-        datas = pd.DataFrame({'x1':x1,'y':y}) 
+        datas = pd.DataFrame({'date':x1,'feeling':y}) 
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
-        datas['x1'] = datas['x1'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
-        datas = datas[-10:]
+        datas['date'] = datas['date'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
+        datas = datas[-30:]
         c = alt.Chart(datas).mark_circle().encode(
-        x='x1',
-        y='y')
+        x='date',
+        y='feeling')
         
         st.altair_chart(c, use_container_width = True)
         #st.write(datas)
