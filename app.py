@@ -41,7 +41,7 @@ else:
         datas = pd.DataFrame({'x1':x1,'y':y}) 
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         datas['x1'] = datas['x1'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
-        c = alt.Chart(datas).mark_line().encode(
+        c = alt.Chart(datas).mark_circle().encode(
         x='x1',
         y='y')
         
