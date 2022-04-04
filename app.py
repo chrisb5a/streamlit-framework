@@ -40,7 +40,7 @@ else:
         x='index:T',
         y='value:Q')
         
-        st.altair_chart(c)
+        st.altair_chart(c, use_container_width = True)
 
         
     else:
