@@ -1,6 +1,7 @@
 import csv
 import requests
 import streamlit as st
+import altair as alt
 
 st.title('sentiment vs stock')
 
@@ -27,7 +28,16 @@ else:
         r = requests.get(url)
         data = r.json()
 
-        st.write(data)
+        x = []
+        y = []
+        for i in range(len(data['data'])):
+            x.append(datetime.strptime(data['data'][i]['date'], '%Y-%m-%d'))
+            y.append(data['data'][i]['value'])
+        alt.Chart(data.reset_index()).mark_line().encode(
+        x='index:T',
+        y='value:Q')
+)
+        
     else:
         
         st.write('write sentiment or stock!')
