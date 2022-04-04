@@ -45,7 +45,8 @@ else:
         x1='index:T',
         y='value:Q')
         
-        st.altair_chart(datas, use_container_width = True)
+        #st.altair_chart(datas, use_container_width = True)
+        st.write(datas)
 
         
     else:
