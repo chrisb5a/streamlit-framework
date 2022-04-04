@@ -28,7 +28,7 @@ if st.session_state.choice == 'stock' :
     df = df[-30:] 
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         
-    c = alt.Chart(df).mark_circle().encode(x='time',
+    c = alt.Chart(df).mark_line().encode(x='time',
         y='close')
     st.altair_chart(c, use_container_width = True)
     
@@ -49,7 +49,7 @@ else:
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         datas['date'] = datas['date'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
         datas = datas[-30:]
-        c = alt.Chart(datas).mark_circle().encode(
+        c = alt.Chart(datas).mark_line().encode(
         x='date',
         y='feeling')
         
