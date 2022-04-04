@@ -3,6 +3,7 @@ import requests
 import streamlit as st
 import altair as alt
 from datetime import datetime
+import pandas as pd
 
 st.title('sentiment vs stock')
 
