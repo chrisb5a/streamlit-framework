@@ -32,14 +32,15 @@ else:
         r = requests.get(url)
         data = r.json()
 
-        x = []
+        x1 = []
         y = []
         for i in range(len(data['data'])):
             #x.append(datetime.strptime(data['data'][i]['date'], '%Y-%m-%d'))
-            x.append(data['data'][i]['date'])
+            x1.append(data['data'][i]['date'])
             y.append(data['data'][i]['value'])
-        datas = pd.DataFrame({'x':x,'y':y}) 
-        datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
+        datas = pd.DataFrame({'x1':x1,'y':y}) 
+        #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
+        datas['x1'] = datas['x1'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
         c = alt.Chart(datas.reset_index()).mark_line().encode(
         x='index:T',
         y='value:Q')
