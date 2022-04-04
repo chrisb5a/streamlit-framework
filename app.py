@@ -42,7 +42,7 @@ else:
         #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
         datas['x1'] = datas['x1'].apply(lambda x: pd.Timestamp(x).strftime('%Y-%m-%d'))
         c = alt.Chart(datas.reset_index()).mark_line().encode(
-        x1='index:T',
+        x='index:T',
         y='value:Q')
         
         st.altair_chart(c, use_container_width = True)
