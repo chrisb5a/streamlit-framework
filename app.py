@@ -21,8 +21,10 @@ if st.session_state.choice == 'stock' :
         decoded_content = download.content.decode('utf-8')
         cr = csv.reader(decoded_content.splitlines(), delimiter=',')
         my_list = list(cr)
-        for row in my_list:
-            st.write(row)
+    df = pd.DataFrame(my_list[1:])
+    df.rename(columns = {0:'time',1:'open', 2:'high',3:'low',4:'close',4:'volume', 5:'close'})
+    
+    
 else:
 
     if str(st.session_state.choice) == 'sentiment' :
@@ -40,7 +42,7 @@ else:
         x='index:T',
         y='value:Q')
         
-        st.altair_chart(c, use_container_width = True)
+        st.line_chart(datas)
 
         
     else:
