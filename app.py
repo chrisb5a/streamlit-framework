@@ -23,7 +23,12 @@ if st.session_state.choice == 'stock' :
         my_list = list(cr)
     df = pd.DataFrame(my_list[1:])
     df.rename(columns = {0:'time',1:'open', 2:'high',3:'low',4:'close',4:'volume', 5:'close'})
-    
+     
+        #datas['x'] = datas['x'].dt.strftime('%Y-%m-%d')
+        
+    c = alt.Chart(df).mark_circle().encode(x=df.index,
+        y='close')
+    st.altair_chart(c, use_container_width = True)
     
 else:
 
